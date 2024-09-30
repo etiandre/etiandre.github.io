@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Oh god i&#39;m not good with computer of god pls help oh man oh god oh fuck</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content on Oh god i&#39;m not good with computer of god pls help oh man oh god oh fuck</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>eti.andre@gmail.com (Étienne André)</managingEditor>
+    <webMaster>eti.andre@gmail.com (Étienne André)</webMaster>
+    <copyright>© 2024 Étienne André</copyright>
+    <lastBuildDate>Fri, 27 Sep 2024 09:58:24 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to DJ Mix Transcription</title>
+      <link>http://localhost:1313/posts/dj-transcription/introduction/</link>
+      <pubDate>Fri, 27 Sep 2024 09:58:24 +0200</pubDate><author>eti.andre@gmail.com (Étienne André)</author>
+      <guid>http://localhost:1313/posts/dj-transcription/introduction/</guid>
+      <description>&lt;p&gt;Transcribing a DJ mix involves analyzing the mix to extract the parameters and techniques used by DJs. This post explores the challenges in DJ mix reverse engineering, explaining key tasks such as alignment and unmixing, and why existing methods struggle to capture the full range of transformations in complex DJ sets.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Transcribing a DJ mix involves analyzing the mix to extract the parameters and techniques used by DJs. This post explores the challenges in DJ mix reverse engineering, explaining key tasks such as alignment and unmixing, and why existing methods struggle to capture the full range of transformations in complex DJ sets.</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Optical tracking of vinyl records</title>
+      <link>http://localhost:1313/posts/dj-transcription/vinyl-optical-tracking/</link>
+      <pubDate>Thu, 26 Sep 2024 14:48:48 +0200</pubDate><author>eti.andre@gmail.com (Étienne André)</author>
+      <guid>http://localhost:1313/posts/dj-transcription/vinyl-optical-tracking/</guid>
+      <description>&lt;p&gt;We implemented an optical tracking method to measure the angular velocity of a vinyl record during playback, enabling the extraction of the time-warping ground truth from a filmed DJ performance. The method can be especially useful given the vast amount of videos of DJ performances online. By tracking a reference picture of a vinyl record to each frame of a video of a DJ turntable, the record&amp;rsquo;s rotation speed can be estimated.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>We implemented an optical tracking method to measure the angular velocity of a vinyl record during playback, enabling the extraction of the time-warping ground truth from a filmed DJ performance. The method can be especially useful given the vast amount of videos of DJ performances online. By tracking a reference picture of a vinyl record to each frame of a video of a DJ turntable, the record&rsquo;s rotation speed can be estimated.</p>
+$$ 2+2 = 4 \frac{A}{B} $$<h2 id="tracking">Tracking</h2>
+<p>The tracking is based on the scale-invariant feature transform (SIFT) algorithm @loweDistinctiveImageFeatures2004. The algorithm extracts keypoints from a reference image of the vinyl&rsquo;s label (@fig:vinyl-ref) and from each frame of a video of the vinyl being played. By matching these keypoints, a homography matrix is computed for each frame. This matrix represents the geometric transformation between the reference and the current frame, capturing the rotation, translation, and scale changes (@fig:vinyl-track). The sequence of homography matrices obtained across the frames is stored for further analysis.</p>
+<figure><img src="/posts/dj-transcription/vinyl-optical-tracking/vinyl-ref.jpg"><figcaption>
+      <h4>Reference image of the vinyl label.</h4>
+    </figcaption>
+</figure>
+
+<video controls preload="auto" width="100%"  playsinline class="html-video">
+    <source src="/posts/dj-transcription/vinyl-optical-tracking/out.mp4" type="video/mp4">
+  <span>Your browser doesn't support embedded videos, but don't worry, you can <a href="/posts/dj-transcription/vinyl-optical-tracking/out.mp4">download it</a> and watch it with your favorite video player!</span>
+</video>
+<!-- ![bla](out.mp4) -->
+<h2 id="rotation-computation">Rotation computation</h2>
+<p>The stored homography matrices are then decomposed to extract the rotation angles of the vinyl record using the singular value decomposition method from #cite(<faugerasMOTIONSTRUCTUREMOTION1988>, form: &ldquo;prose&rdquo;). The rotation on the $z$ axis corresponds to the rotation of the vinyl record. The rotation angle sequence is unwrapped then derived to obtain the rotation speed. Then, with knowledge of the nominal speed of the record (e.g. 33 or 45 rpm), the time-warping function can be calculated. Example results are illustrated in @fig:vinyl-results.</p>
+<figure><img src="/posts/dj-transcription/vinyl-optical-tracking/rotato.svg"><figcaption>
+      <h4>Computed angle and rotation speed of the vinyl. In the experiment, the record was played at 33 rpm for the first 30 seconds, then was &#34;scratched&#34; by hand for the remaining of the experiment.</h4>
+    </figcaption>
+</figure>
+
+<p>The accuracy of the extracted rotational speed is directly dependent on the temporal resolution of the video (usually 30 or 60 images per second), which limits the granularity of the measurements. Additionally, the method is susceptible to noise introduced by the tracking process, which can affect the precision of the rotation and speed calculations.</p>
+<p>Similar object tracking techniques could be used to extract ground truth data from any visible physical control of the DJ equipment.</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

@@ -1,10 +1,31 @@
+<p>
+  <a href="https://github.com/etiandre">
+    <box-icon type='logo' name='github' color="var(--text)" size="lg"></box-icon>
+  </a>
+  <a href="https://scholar.google.fr/citations?hl=en&amp;pli=1&amp;user=bbwN-eAAAAAJ">
+    <box-icon name='graduation' type='solid' color="var(--text)" size="lg"></box-icon>
+  </a>
+  <a href="https://www.linkedin.com/in/%C3%A9tienne-andr%C3%A9-683b97144/">
+    <box-icon name='linkedin-square' type='logo' color="var(--text)" size="lg"></box-icon>
+  </a>
+  <a href="https://soundcloud.com/pedeiche">
+    <box-icon name='soundcloud' type='logo' color="var(--text)" size="lg"></box-icon>
+  </a>
+</p>
+</p>
 {{ with .Site.Copyright }}
-  <span>{{ . }}</span>
+<span>{{ . }}</span>
 {{ end }}
 {{ if not .Site.Params.hideMadeWithLine }}
-  <span>
-    {{ if .Site.Copyright }}|{{ end }}
-    Made with
-    <a href="https://github.com/maolonglong/hugo-simple/">Hugo ʕ•ᴥ•ʔ Simple</a>
-  </span>
+<span>
+  {{ if .Site.Copyright }}|{{ end }}
+  Made with
+  <a href="https://github.com/maolonglong/hugo-simple/">Hugo ʕ•ᴥ•ʔ Simple</a>
+</span>
 {{ end }}
+<span>
+  -
+  <a href="{{ relURL " index.xml" }}" style="text-decoration:none">
+    RSS <box-icon name='rss' color="var(--text)" size="xs"></box-icon>
+  </a>
+</span>

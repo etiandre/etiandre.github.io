@@ -1,7 +1,7 @@
 +++
 title = 'Publications'
 date = 2024-09-30T10:09:33+02:00
-draft = true
+draft = false
 +++
 
 - André, É., Fourer, D. & Schwarz, D. (2024). DJ Mix Transcription with Multi-Pass Non-Negative Matrix Factorization [Manuscript submitted for publication at ICASSP2025]

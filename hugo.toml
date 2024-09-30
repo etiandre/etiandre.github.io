@@ -8,7 +8,7 @@ copyright = "© 2024 Étienne André"
 enableRobotsTXT = true
 
 # https://github.com/gohugoio/hugo/issues/12152
-# capitalizeListTitles = false
+capitalizeListTitles = false
 
 [params]
 math = true

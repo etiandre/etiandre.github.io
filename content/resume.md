@@ -12,13 +12,13 @@ French & English spoken and written
 
 ## Education
 
-### 2023-2024 - Second masters' degree
+### 2023-2024 / Second masters' degree
 
 **Signal Processing, Computer Science and Acoustics applied to Music ([ATIAM](http://www.atiam.ircam.fr/en/))**
 
 _IRCAM / Sorbonne Université, France_
 
-### 2016-2020 - Masters' degree
+### 2016-2020 / Masters' degree
 
 **Embedded systems ([SEM](https://www.telecom-sudparis.eu/en/formation/embedded-systems-mobility-and-communicating-objects/))**
 
@@ -26,7 +26,7 @@ _Télécom SudParis, France_
 
 ## Experience
 
-### 2024 - Internship - Automatic DJ Mix Transcription
+### 2024 - Internship / Automatic DJ Mix Transcription
 
 _IRCAM, ISMM, STMS, Paris, France_
 
@@ -36,7 +36,7 @@ MIR, NMF, Python, CPU/GPU, Pytorch
 - Submission of a [scientific publication](/publications).
 - Study of data sets.
 
-### 2021 - 2023 DSP and embedded engineer
+### 2021 - 2023 / DSP and embedded engineer
 
 _Arkamys, Paris, France_
 
@@ -49,7 +49,7 @@ C, C++, Qt, Matlab, Python, Linux, DSP, GStreamer
 - GStreamer pipeline design.
 - Embedded Linux development and deployment.
 
-### 2020 Internship - smartphone audio performance evaluation
+### 2020 Internship / smartphone audio performance evaluation
 
 _DXOMark, Boulogne-Billancourt, France_
 
@@ -58,7 +58,7 @@ Python, Qt, DSP, Android
 - Design and implementation of an audio dynamic performance evaluation method for smartphones.
 - Automation and simplification of the audio test protocol through the creation of various scripts and graphical interfaces.
 
-### 2019 Internship - DUF: Dynamic Uncore Frequency
+### 2019 Internship / DUF: Dynamic Uncore Frequency
 
 _Télécom SudParis, Évry-Courcouronnes, France_
 

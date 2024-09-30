@@ -49,3 +49,7 @@ main > p:first-child time {
 pre span {
   color: #cdd6f4;
 }
+
+footer a {
+  text-decoration: none;
+}

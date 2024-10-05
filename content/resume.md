@@ -4,7 +4,7 @@ date = 2024-09-30T09:35:10+02:00
 draft = false
 +++
 
-<button class="no-print" onclick="window.print()"><box-icon name='printer'></box-icon> Print or Save as PDF</button>
+<button class="no-print" onclick="window.print()"><box-icon name='printer' color="var(--accent-text)"></box-icon> Print or Save as PDF</button>
 
 ## Étienne Paul André - Audio/DSP & Embedded Engineer
 

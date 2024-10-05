@@ -125,8 +125,22 @@ thead th:empty {
     font-size: 0.96rem;
   }
 
-  a, a:visited {
+  a,
+  a:visited {
     text-decoration: none;
     color: black;
+  }
+}
+
+img.profile-picture {
+  float: right;
+  margin-left: 20px;
+  max-width: 200px;
+  height: auto;
+}
+
+@media only screen and (max-width: 500px) {
+  img.profile-picture {
+    max-width: 150px;
   }
 }

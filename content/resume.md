@@ -36,7 +36,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
     Specialization: **Signal Processing, Computer Science and Acoustics applied to Music ([ATIAM](http://www.atiam.ircam.fr/en/))**
 
 2016-2020
-:   **Engineering degree (Master's level)**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
+:   **Master's degree in Engineering**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
 
     Specialization: **Embedded systems, Mobility and Communicating objects ([SEM](https://www.telecom-sudparis.eu/en/formation/embedded-systems-mobility-and-communicating-objects/))**
 

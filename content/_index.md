@@ -6,7 +6,7 @@ draft = false
 
 ## Hi!
 
-I’m **Étienne**, an **audio and embedded systems engineer** passionate about blending sound and technology.
+I’m **Étienne**, an **audio and embedded systems engineer** passionate about blending sound and technology, based in Paris, France.
 
 {{< notice >}}
 

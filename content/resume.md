@@ -6,7 +6,7 @@ draft = false
 
 <button class="no-print" onclick="window.print()"><box-icon name='printer'></box-icon> Print or Save as PDF</button>
 
-## Étienne André - Audio/DSP & Embedded Engineer
+## Étienne Paul André - Audio/DSP & Embedded Engineer
 
 [eti.andre@gmail.com](mailto:eti.andre@gmail.com) / [(+33) 6 51 23 64 89](tel:+33651236489) / [https://etiand.re](https://etiand.re)
 
@@ -19,7 +19,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
 ## Skills
 
 - **Expertise**:
-  - **Digital Signal Processing (DSP)**: Classic algorithms, ML techniques, Real-time audio applications, Practical experience in creating electronic music
+  - **Digital Signal Processing (DSP)**: Classic algorithms, ML techniques, Real-time audio applications, Music Information Retrieval, Analysis & Synthesis, Practical experience in creating electronic music
   - **Embedded Systems**: Automotive platforms, RTOS, Multi-threaded environments
   - **Linux/UNIX Environments**: Development, Administration, Scripting, Deployment
 - **Programming Languages**: `C`, `C++`, `Python`, `Matlab`, `Rust`, `Bash`, `LaTeX`, `Typst`...
@@ -82,4 +82,4 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
     - Implemented the DUF algorithm as a low-level C daemon.
     - Extensively studied Intel CPU quirks and behaviors.
     - Conducted experiments on the performance of the algorithm on massively distributed clusters.
-    - Participed in a [scientific publication](/publications).
+    - Participation in the project led to a [scientific publication](/publications).

@@ -2,8 +2,8 @@ theme = ['hugo-video', 'hugo-simple']
 
 baseURL = 'https://etiand.re'
 languageCode = 'en-us'
-title = "Étienne's blog"
-copyright = "© 2024 Étienne André"
+title = "Étienne Paul André - Audio, DSP & Embedded Engineer"
+copyright = "© 2024 Étienne Paul André"
 
 enableRobotsTXT = true
 
@@ -20,7 +20,7 @@ hideMadeWithLine = true
 hideRSSLink = false
 
 [params.author]
-name = "Étienne André"
+name = "Étienne Paul André"
 email = "eti.andre@gmail.com"
 
 [[menu.main]]

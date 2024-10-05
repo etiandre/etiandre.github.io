@@ -4,16 +4,29 @@ date = 2024-09-30T09:35:10+02:00
 draft = false
 +++
 
-<button class="no-print" onclick="window.print()">Print or Save as PDF</button>
+<button class="no-print" onclick="window.print()"><box-icon name='printer'></box-icon> Print or Save as PDF</button>
 
 ## Étienne André - Audio/DSP & Embedded Engineer
 
-
 [eti.andre@gmail.com](mailto:eti.andre@gmail.com) / [(+33) 6 51 23 64 89](tel:+33651236489) / [https://etiand.re](https://etiand.re)
+
+Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focus on Research and Development. Passionate about advancing audio technology through innovative algorithms and applications in the fields of audio processing and/or embedded systems.
 
 **Languages**: French (Native), English (Fluent), Italian (Basic)
 
 <div class="only-print"><strong><center>An up-to-date resume is available at https://etiand.re/resume</center></strong></div>
+
+## Skills
+
+- **Expertise**:
+  - **Digital Signal Processing (DSP)**: Classic algorithms, ML techniques, Real-time audio applications, Practical experience in creating electronic music
+  - **Embedded Systems**: Automotive platforms, RTOS, Multi-threaded environments
+  - **Linux/UNIX Environments**: Development, Administration, Scripting, Deployment
+- **Programming Languages**: `C`, `C++`, `Python`, `Matlab`, `Rust`, `Bash`, `LaTeX`, `Typst`...
+- **Frameworks and Libraries**: `Qt`, `Pytorch`, `Numpy`, `GStreamer`, `OpenCV`, `libAV`
+- **Platforms**: `Linux`, `Android`, `QNX`, `Windows`
+- **Development Tools**: `Git`, `CMake`, `Docker`, Continuous Integration/Continuous Deployment (CI/CD)
+
 
 ## Education
 
@@ -37,7 +50,7 @@ draft = false
     - Designed a novel algorithm based on Non-negative Matrix Factorization for DJ mix transcription.
     - Implemented an optical tracking technique for measurement of a record's rotation speed.
     - Reverse-engineered the data format of Ableton Live project files and implemented a data extraction tool.
-    - Submitted a [scientific publication](/publications) to a major international conference.
+    - Submitted a [scientific publication](/publications) to a major international conference (pending acceptation).
     - Studied and proposed new DJ Music Information Retrieval datasets.
 
 2021 - 2023

@@ -44,6 +44,13 @@ def decompose_homography(M):
     return theta_x, theta_y, theta_z
 ```
 
+
+Let $\mathbf{M} = \begin{bmatrix} \mathbf{u_1} & \mathbf{u_2} & \mathbf{u_3} \end{bmatrix}$ be a 3x3 homography matrix.
+
+1. What does $\mathbf{u_1}$, $\mathbf{u_2}$ and  $\mathbf{u_3}$ represent ?
+2. Let $\mathbf{v} = \mathbf{u_1} \times \mathbf{u_2} $ and $\mathbf{R} = \begin{bmatrix} \mathbf{u_1} & \mathbf{u_2} & \mathbf{v} \end{bmatrix}$. What does $\mathbf{R}$ represent ? Justify your answer.
+3. Assume singular value decomposition is performed on $\mathbf{R}$, so that $\mathbf{R} = \mathbf{U} \mathbf{S} \mathbf{V}^T$. Let $\mathbf{P} = \mathbf{U} \mathbf{V}^T$. What can be said of $\mathbf{P}$ ?
+
 Given a homography matrix \( \mathbf{M} \), we can decompose it to retrieve the rotation matrix \( \mathbf{R} \) using the following steps:
 
 1. Assume \( \mathbf{M} \) can be expressed as:

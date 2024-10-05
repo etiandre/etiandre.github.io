@@ -1,6 +1,6 @@
 theme = ['hugo-video', 'hugo-simple']
 
-baseURL = 'https://www.etiand.re'
+baseURL = 'https://etiand.re'
 languageCode = 'en-us'
 title = "Étienne's blog"
 copyright = "© 2024 Étienne André"

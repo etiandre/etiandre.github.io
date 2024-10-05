@@ -1,68 +1,72 @@
 +++
 title = 'Resume'
 date = 2024-09-30T09:35:10+02:00
-draft = true
+draft = false
 +++
 
-## Étienne André
+<button class="no-print" onclick="window.print()">Print or Save as PDF</button>
+
+## Étienne André - Audio/DSP & Embedded Engineer
+
 
 [eti.andre@gmail.com](mailto:eti.andre@gmail.com) / [(+33) 6 51 23 64 89](tel:+33651236489) / [https://etiand.re](https://etiand.re)
 
-French & English spoken and written
+**Languages**: French (Native), English (Fluent), Italian (Basic)
+
+<div class="only-print"><strong><center>An up-to-date resume is available at https://etiand.re/resume</center></strong></div>
 
 ## Education
 
-### 2023-2024 / Second masters' degree
+2023-2024
+:   **Master's degree**; IRCAM / Sorbonne Université, Paris, France
 
-**Signal Processing, Computer Science and Acoustics applied to Music ([ATIAM](http://www.atiam.ircam.fr/en/))**
+    Specialization: **Signal Processing, Computer Science and Acoustics applied to Music ([ATIAM](http://www.atiam.ircam.fr/en/))**
 
-_IRCAM / Sorbonne Université, France_
+2016-2020
+:   **Engineering degree (Master's level)**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
 
-### 2016-2020 / Masters' degree
-
-**Embedded systems ([SEM](https://www.telecom-sudparis.eu/en/formation/embedded-systems-mobility-and-communicating-objects/))**
-
-_Télécom SudParis, France_
+    Specialization: **Embedded systems, Mobility and Communicating objects ([SEM](https://www.telecom-sudparis.eu/en/formation/embedded-systems-mobility-and-communicating-objects/))**
 
 ## Experience
 
-### 2024 - Internship / Automatic DJ Mix Transcription
+2024
+:   **Internship / Automatic DJ Mix Transcription**; IRCAM, ISMM, STMS, Paris, France
 
-_IRCAM, ISMM, STMS, Paris, France_
+    _MIR, NMF, Python, CPU/GPU, Pytorch_
 
-MIR, NMF, Python, CPU/GPU, Pytorch
+    - Designed a novel algorithm based on Non-negative Matrix Factorization for DJ mix transcription.
+    - Implemented an optical tracking technique for measurement of a record's rotation speed.
+    - Reverse-engineered the data format of Ableton Live project files and implemented a data extraction tool.
+    - Submitted a [scientific publication](/publications) to a major international conference.
+    - Studied and proposed new DJ Music Information Retrieval datasets.
 
-- Design of an innovative DJ mix transcription algorithm.
-- Submission of a [scientific publication](/publications).
-- Study of data sets.
+2021 - 2023
+:   **DSP and embedded engineer**; Arkamys, Paris, France
 
-### 2021 - 2023 / DSP and embedded engineer
+    _C, C++, Qt, Matlab, Python, Linux, DSP, GStreamer, QNX_
 
-_Arkamys, Paris, France_
+    - Maintained and developed new features on an automatic automotive audio experience optimizer.
+    - Ported complex DSP algorithms on embedded devices with automotive constraints (Qualcomm, NXP).
+    - Led task forces and worked directly with international clients.
+    - Implemented a low-latency audio effect stack for Android applications.
+    - Designed and implemented real-time GStreamer pipelines and applications.
+    - Improved the embedded Linux development environment and deployment procedures.
+    - Prototyped and developed complex multi-platform audio applications.
 
-C, C++, Qt, Matlab, Python, Linux, DSP, GStreamer
+2020
+:   **Internship / Evaluation of smartphone audio performance**; DXOMark, Boulogne-Billancourt, France
 
-- Development of an automatic tool for optimizing the automotive audio experience.
-- Development of complex multi-platform audio applications.
-- Development of Android applications.
-- Algorithm porting to DSP.
-- GStreamer pipeline design.
-- Embedded Linux development and deployment.
+    _Python, Qt, DSP, Android_
 
-### 2020 Internship / smartphone audio performance evaluation
+    - Designed and implemented a performance evaluation method for the dynamic audio performance of smartphones.
+    - Automated and simplified the audio test protocol through the creation of various scripts and graphical interfaces.
 
-_DXOMark, Boulogne-Billancourt, France_
+2019
+:   **Internship / DUF: Dynamic Uncore Frequency**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
 
-Python, Qt, DSP, Android
+    _C, Linux, distributed systems_
 
-- Design and implementation of an audio dynamic performance evaluation method for smartphones.
-- Automation and simplification of the audio test protocol through the creation of various scripts and graphical interfaces.
-
-### 2019 Internship / DUF: Dynamic Uncore Frequency
-
-_Télécom SudParis, Évry-Courcouronnes, France_
-
-C, Linux, distributed systems
-
-- Development of a daemon dynamically adapting the uncore frequency on Intel architectures, in order to reduce the energy consumption of a distributed computing application.
-- Participation to a [scientific publication](/publications).
+    - Implemented the DUF algorithm as a low-level C daemon.
+    - Extensively studied Intel CPU quirks and behaviors.
+    - Conducted experiments on the performance of the algorithm on massively distributed clusters.
+    - Participed in a [scientific publication](/publications).

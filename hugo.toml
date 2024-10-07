@@ -12,8 +12,8 @@ capitalizeListTitles = false
 
 [params]
 math = true
-title = "Hugo Simple"
-description = "Hugo Simple Demo"
+title = "Étienne Paul André - Audio, DSP & Embedded Engineer"
+description = "Personal website of Étienne Paul André - Audio, DSP & Embedded Engineer"
 favicon = "images/favicon.png"
 dateFormat = "2006-01-02"
 hideMadeWithLine = true

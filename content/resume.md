@@ -47,11 +47,13 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
 
     _MIR, NMF, Python, CPU/GPU, Pytorch_
 
+    - Submitted a [scientific publication](/publications) to a major international conference (pending acceptation).
+    - Explored a novel matrix-based symbolic representation for DJ mixes.
     - Designed a novel algorithm based on Non-negative Matrix Factorization for DJ mix transcription.
+    - Efficiently implemented the algorithm for CPU and GPU using sparse matrix data structures.
+    - Studied and proposed new DJ Music Information Retrieval datasets.
     - Implemented an optical tracking technique for measurement of a record's rotation speed.
     - Reverse-engineered the data format of Ableton Live project files and implemented a data extraction tool.
-    - Submitted a [scientific publication](/publications) to a major international conference (pending acceptation).
-    - Studied and proposed new DJ Music Information Retrieval datasets.
 
 2021 - 2023
 :   **DSP and embedded engineer**; Arkamys, Paris, France

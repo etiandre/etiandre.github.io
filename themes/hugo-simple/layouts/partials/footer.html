@@ -11,6 +11,16 @@
   <a href="https://soundcloud.com/pedeiche">
     <box-icon name='soundcloud' type='logo' color="var(--text)" size="lg"></box-icon>
   </a>
+  <a href="https://www.zotresfanfare.com/">
+    <picture>
+      <source srcset="/zotres-black.svg" media="(prefers-color-scheme: light)" />
+
+      <source srcset="/zotres-white.svg" media="(prefers-color-scheme: dark)" />
+
+      <img src="/zotres-black.svg" style="height: 42px;" />
+    </picture>
+
+  </a>
 </p>
 </p>
 {{ with .Site.Copyright }}
@@ -25,7 +35,7 @@
 {{ end }}
 <span>
   -
-  <a href="{{ relURL "index.xml" }}" style="text-decoration:none">
+  <a href="{{ relURL " index.xml" }}" style="text-decoration:none">
     RSS <box-icon name='rss' color="var(--text)" size="xs"></box-icon>
   </a>
 </span>

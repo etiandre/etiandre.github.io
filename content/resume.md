@@ -77,7 +77,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
     - Automated and simplified the audio test protocol through the creation of various scripts and graphical interfaces.
 
 2019
-:   **Internship / DUF: Dynamic Uncore Frequency**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
+:   **Internship / DUF: Dynamic Uncore Frequency scaling to reduce power consumption**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
 
     _C, Linux, distributed systems_
 

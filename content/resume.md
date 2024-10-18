@@ -3,8 +3,10 @@ title = 'Resume'
 date = 2024-09-30T09:35:10+02:00
 draft = false
 +++
-
-<button class="no-print" onclick="window.print()"><box-icon name='printer' color="var(--accent-text)"></box-icon> Print or Save as PDF</button>
+<center>
+<p><button class="no-print" onclick="window.print()"><box-icon name='printer' color="var(--accent-text)"></box-icon> Print / <box-icon type='solid' name='file-pdf' color="var(--accent-text)"></box-icon> Save as PDF</button></p>
+<p><a class="no-print" href="/cv">🇫🇷 version française</a></p>
+</center>
 
 ## Étienne Paul André - Audio/DSP & Embedded Engineer
 

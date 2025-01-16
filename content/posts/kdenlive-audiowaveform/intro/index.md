@@ -1,5 +1,5 @@
 +++
-title = 'Rendering Audio Waveforms in Kdenlive'
+title = 'Rendering Audio Waveforms: Introduction'
 date = 2024-12-14T18:24:37+01:00
 draft = true
 +++
@@ -89,7 +89,7 @@ Then, the actual rendering can also be a bit different. The timeline of a video 
 
 And, in fact, Kdenlive's implementation did just that. But to understand how exactly, we most go a bit deeper into Kdenlive's architecture.
 
-Kdenlive is based on [MLT](https://www.mltframework.org/), a C framework which aims to be a toolkit for multiple multimedia-based applications, including non-linear video editing. This library provides the abstractions that software like Kdenlive (and [Shotcut](https://www.shotcut.org/), and others) use.
+Kdenlive is based on [MLT](https://www.mltframework.org/), a C framework which aims to be a toolkit for multimedia applications, focused on video editing. This library provides the abstractions that software like Kdenlive (and [Shotcut](https://www.shotcut.org/), and others) use.
 
 All objects in MLT (called *services*) produce, consume or transform *frames* (a *frame* includes video and audio). Among them, the *producers* read frames from a video file or another composition, the *consumers* ingest frames to display them on the screen, or encode them to a media file, the *filters* transform frames. All these services can be then connected in a *network*, to create complex audio/video graphs. There's a lot more going into it, if you're interested, the [MLT Docs](https://www.mltframework.org/docs/framework/) provide a great overview.
 
@@ -101,7 +101,7 @@ The resulting summary vector is then cached by serializing its content as color 
 
 Unfortunately, as straightforward as this approach is, it suffers from a few limitations.
 
-Keeping only one point per frame in the summary is in fact not sufficient for the users. Even if we're not talking about the levels of precision required in audio editing apps, a resolution of 1/30 of a second simply hides too much information. Also, the audio levels were stored in a 8-bit int, and thus was able to store only $2^8 = 256$ discrete steps, which did not really help.
+Keeping only one point per frame in the summary is in fact not sufficient for the users. Even if we're not talking about the levels of precision required in audio editing apps, a resolution of 1/30 of a second simply hides too much information. Also, the audio levels were stored in a 8-bit unsigned int, and thus was able to store only $2^8 = 256$ discrete steps, which did not really help.
 
 The rendering also looked like it did somme funky stuff: comparing it with some reference renderings from other audio software, something was defenitly off.
 
@@ -109,42 +109,6 @@ The rendering also looked like it did somme funky stuff: comparing it with some 
 
 But the worst was the performance. Generating audio summaries usually take some time (after all, you have to read and decode the whole file), but the competition is able to do it much, much quicker. In fact, the operations that should consume the majority of time are disk access and decoding the audio streams.
 
-One of the ways to identify the root cause of the performance problems is using a [profiler](https://en.wikipedia.org/wiki/Profiling_(computer_programming)). A profiler instruments the program and measures statistics like the amount of function calls. What we're after here is to get a report on how much time is spent in which functions.
-
-Profiling for performance in a complex program like Kdenlive is a bit tricky: to obtain representative results, one has to be careful on the profiling approach. It would be infeasible to use traditional event-based profilers, as they would slow down the execution too much. Since we suspect that a lot of time is spent doing i/o, we would skew the results if we altered the program's execution speed too much.
-
-So, we turn ourselves to sampling profilers. Instead of instrumenting every single function call in a target program, these profilers take "snapshots" of their call stack at regular intervals. I will be using [perf](https://perfwiki.github.io/main/) for profiling and [hotspot](https://github.com/KDAB/hotspot) for visualisation, but many other tools are available.
-
-### Profiling the audio summary generation in Kdenlive
-
-- Insert start and stop collecting signals in source
-- Build with optimizations and debug symbols
-- perf record, use high frequency
-- run kdenlive and load a preferably long audio file
-- use hotspot
-
-
-- Discuss inefficiencies revealed through profiling: most time was spent on memory and property management rather than actual decoding or processing.  
-- Include a **step-by-step guide on using "perf"** for profiling, with visuals of profiling results to emphasize the bottlenecks.  
-
-
-## **4. Designing the New Approach**  
-
-### **Summarizing Audio Data Efficiently**  
-
-- Describe the key idea: precomputing a coarse summary of the audio, storing it in memory, and dynamically summarizing it further for rendering.  
-- Explain the **sliding window approach** for calculating summaries, focusing on:  
-  - Why symmetrical waveforms justify storing only the maximum absolute value.  
-  - How this reduces memory use (with an example comparing space used by summaries vs original files).
-
-### **Switching to libav-* for Performance**  
-
-- Overview of the decision to use libav-* directly instead of MLT.  
-- Challenges of working with the libav C API, including corner cases and manual memory management.  
-- Performance tricks: FIFO buffers, efficient data flow.  
-- **Show results**: speed improvements of the new method (2x to 4x, depending on input).  
-
----
 
 ## **5. Improvements in Visual Rendering**  
 

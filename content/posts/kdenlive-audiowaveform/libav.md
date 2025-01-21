@@ -1,26 +1,42 @@
 +++
-title = 'Using libav to decode audio streams in C/C++'
+title = 'Using libav* to decode audio streams in C/C++'
 date = 2025-01-16T09:58:59+01:00
 draft = true
 +++
 
+This post presents the notions and thought process behind audio processing using [ffmpeg's libav](https://trac.ffmpeg.org/wiki/Using%20libav*), with annotated example code.
+
+The `libav*` set of libraries is the foundation behind the ubiquitous `ffmpeg`, and has a reputation for being hard to grasp - most people<sup>*[citation needed]*</sup> prefer using the command-line API rather than having to deal with it. Thankfully, [the official documentation](https://www.ffmpeg.org/documentation.html) and the [API docs & examples](https://www.ffmpeg.org/doxygen/trunk/index.html) provide solid guidance for those who want to dive deeper. Let’s demystify the basics and get started!
+
 ## Introduction
 
-The `libav-*` set of libraries is the foundation behind the ubiquitous `ffmpeg`, and ihas a reputation for being hard to grasp - most developers prefer using the command-line API rather than having to deal with it *[citation needed]*. Fortunately, [the documentation](https://www.ffmpeg.org/documentation.html) is very thourough, and the [API docs](https://www.ffmpeg.org/doxygen/trunk/index.html) includes many examples.
+Before diving in, let's clarify a few key terms.  
 
-A media file can be viewed as a *container* that contains one or more *streams*. These streams can be video, audio, subtitles, or anything else, really. We get theses streams in small batches - *packets* in ffmpeg parlance - which can contain one or more *frames*.
+A media file is essentially a **container**[^container] wrapping one or more **streams**—these could be video, audio, subtitles, or other data types. These streams are accessed in small chunks called **packets** (in FFmpeg terminology), which can contain one or more **frames**.  
 
-We're after the audio streams, which can be compressed and need to be decoded. After decoding, the raw audio stream can have any *sample format*, which we will need to handle. Rather than writing separate code for each case, we will be using a sample converter.
+[^container]: Containerless media files also exist, we can still view them as a "transparent" container that does nothing and contains only 1 stream.
+
+Streams are often compressed, so they need to be decoded into raw data by a **codec** before an application can process them. For audio streams, the raw data is decoded as **raw pcm audio**, then stored in an **audio buffer**. However, several types and layouts of raw audio exist:
+
+- **Channel Layout**: defines not only the number of channels, but also their specific roles and arrangement (e.g. what we call "stereo" audio means 2 channels, first channel is on the left, second channel is on the Right)
+- **Sample Rate**: The number of audio samples per second, measured in Hertz, determining the audio's temporal resolution.  
+- **Sample Format**: Describes how each audio sample is stored, such as integers (e.g., signed or unsigned, 8/16/24/32-bit) or floating-point values.  
+- **Buffer Layout**: Dictates how channel data is organized in memory:  
+  - In **deinterleaved** (or **planar**) audio, samples for each channel are stored separately, e.g., `[L1, L2, L3]` for the left channel and `[R1, R2, R3]` for the right.
+  - In **interleaved** (or **packed**) audio, samples from all channels are stored sequentially, e.g., `[L1, R1, L2, R2, L3, R3]`.
+
+
+Writing code to handle all raw audio formats can be done but would be tiresome. Instead, we can opt to **convert** it towards a fixed format of our choosing, depending on the application.
+
+When processing, it could be tempting to load the whole audio stream in one go in a big buffer, then process it afterwards. Let's take an example of a typical audio stream: 1 hour of 16-bit, 5.1 surround (= 6 channel), raw audio sampled at 48kHz. This would result in a buffer of size $3,600 \text{ s} \times 48,000 \text{ Hz} \times 6 \text{ channels} \times 2 \text{ bytes (16 bits)} \approx 2.07 \text{ Gigabytes} $ ! Even if most computers today have enough RAM to handle this, let's not be greedy, and process it instead piece by piece, which is what we'll do next.
 
 ## The plan
 
-To summarize, we are given:
+Our overarching goal is to be able **to process some audio audio stream** (to filter it, send it to the soundcard, or whatever) stored inside some media file. For that we need to decode the stream to obtain a series of raw audio buffers. For this example, we assume that our imaginary audio processing function only accepts **signed 16-bit interleaved audio**, of any sample rate and any channel layout.
 
-- a path to a media file
-- a stream index, corresponding to an audio stream
-- the required precision of the waveform, e.g. the number of data points per second
+Using `libav*`, this boils down to the following steps:
 
-So here is what we have to do before we do any computation:
+**Initialization & checks**
 
 1. Open the file and decode the container format
 2. Find out which streams are audio, and check that our stream index is valid
@@ -28,7 +44,7 @@ So here is what we have to do before we do any computation:
 4. Get the audio stream details (sample format, etc) and use it to setup the sample converter
 5. Allocate an output buffer to store the decoded raw audio
 
-Then, the main loop looks like this:
+**Main processing loop:**
 
 - For each packet in the file:
   - Make sure it corresponds to the audio stream we want, else toss it and go to the next
@@ -37,15 +53,13 @@ Then, the main loop looks like this:
     - Convert its sample format, if needed, and store the result in the buffer
     - Process the data
 
-Phew !
+Phew ! Now that's out of the way, let's get into the details.
 
 ## Code walkthrough
 
-As libav is a C library, expect manual memory management, `goto`s and integer error codes. You have been warned!
-
 ### Initialization
 
-First, let's include and initialize all the `libav` structures we need. We also declare some variables to store information about the stream.
+First, let's include and initialize all the `libav` structures we need. We also declare some variables to store information about the stream later.
 
 ```c
 #include <stdio.h>
@@ -72,16 +86,16 @@ int src_rate = 0, dst_rate = 0;
 int src_nb_channels = 0, dst_nb_channels = 0;
 int dst_linesize = 0;
 
-// Let's say our stream index is the first one.
+// Let's say the  stream we're interested in the first one.
 const int STREAM_IDX = 0;
 ```
 
 Let's then go trough the plan!
 
-First, we open the file and populate the `AVFormatContext` struct, which will contain info on the file. In each step, we must make sure that each API call succeeds before calling the next one, or our program will segfault (in the best scenario).
+First, we open the file and populate the `AVFormatContext` struct, which will contain info on the container format. In each step, we must make sure that each API call succeeds before calling the next one, or our program will segfault (in the best scenario).
 
 ```c
-ret = avformat_open_input(&fmt_ctx, "path/to/media.file", NULL, NULL);
+ret = avformat_open_input(&fmt_ctx, "uri://to/media.file", NULL, NULL);
 if (ret < 0) {
     fprintf(stderr, "Could not open input file: %s\n", av_err2string(ret));
     goto cleanup;
@@ -91,7 +105,7 @@ if (ret < 0) {
 // This function reads a few packets to fully populate fmt_ctx.
 ret = avformat_find_stream_info(fmt_ctx, NULL);
 if (ret < 0) {
-    fprintf("Could not find stream information: %s\n", av_err2string(ret));
+    fprintf(stderr, "Could not find stream information: %s\n", av_err2string(ret));
     goto cleanup;
 }
 
@@ -105,29 +119,28 @@ stream = fmt_ctx->streams[STREAM_IDX];
 // Find the corresponding codec for the requested stream
 codec = avcodec_find_decoder(stream->codecpar->codec_id);
 if (!codec) {
-    fprintf("No suitable decoder found for %s\n", avcodec_get_name(stream->codecpar->codec_id));
+    fprintf(stderr, "No suitable decoder found for %s\n", avcodec_get_name(stream->codecpar->codec_id));
     goto cleanup;
 }
 
 // Create the codec context
 codec_ctx = avcodec_alloc_context3(codec);
 if (!codec_ctx) {
-    fprintf("Failed to allocate codec context");
+    fprintf(stderr, "Failed to allocate codec context");
     goto cleanup;
 }
 
 // Pass the stream info to the codec
 ret = avcodec_parameters_to_context(codec_ctx, stream->codecpar);
 if (ret < 0) {
-    fprintf("Failed to copy codec parameters to codec: %s\n", av_err2string(ret));
+    fprintf(stderr, "Failed to copy codec parameters to codec: %s\n", av_err2string(ret));
     goto cleanup;
 }
 ```
 
-Some codecs are able to output multiple sample formats. If we're lucky, we can directly get the desired sample format (in our case, interleaved[^planar] signed 16 bits integers[^integers]), but it can't be guaranteed to be the case.
+Some codecs are able to output multiple sample formats. If we're lucky, we can directly get the desired sample format (in our case, interleaved signed 16 bits integers[^integers]), but it can't be guaranteed to be the case.
 
-[^planar]: The ffmpeg docs call non-interleaved sample formats *planar*
-[^integers]: We chose integers for performance, and because we don't really care for precision. In real audio applications, you probably want to do your computation using floats.
+[^integers]: In pro-audio applications, and if you can spare the processing power, you probably want to do your computation using floats.
 
 ```c
 codec_ctx->request_sample_fmt = AV_SAMPLE_FMT_S16;
@@ -138,7 +151,7 @@ Now that we have everything, we can initialize the codec.
 ```c
 ret = avcodec_open2(codec_ctx, codec, NULL);
 if (ret < 0) {
-    fprintf("Failed to open codec: %s\n", av_err2string(ret));
+    fprintf(stderr, "Failed to open codec: %s\n", av_err2string(ret));
     goto cleanup;
 }
 ```
@@ -166,12 +179,12 @@ We are now able to initialize the library.
 ```c
 ret = swr_alloc_set_opts2(&swr_ctx, dst_ch_layout, dst_sample_fmt, dst_rate, src_ch_layout, src_sample_fmt, src_rate, 0, NULL);
 if (ret < 0) {
-    fprintf("Failed to set SwrContext options: %s\n", av_err2string(ret));
+    fprintf(stderr, "Failed to set SwrContext options: %s\n", av_err2string(ret));
     goto cleanup;
 }
 
 if ((ret = swr_init(swr_ctx)) < 0) {
-    fprintf("Failed to initialize SwrContext: %s\n", av_err2string(ret));
+    fprintf(stderr, "Failed to initialize SwrContext: %s\n", av_err2string(ret));
     goto cleanup;
 }
 ```
@@ -192,7 +205,7 @@ while (av_read_frame(fmt_ctx, packet) >= 0) {
 
     // Decode the packet
     if ((ret = avcodec_send_packet(codec_ctx, packet)) < 0) {
-        fprintf("Error sending packet for decoding: %s\n", av_err2string(ret));
+        fprintf(stderr, "Error sending packet for decoding: %s\n", av_err2string(ret));
         break;
     }
 ```
@@ -207,7 +220,7 @@ Each packet may contain more than 1 frame of audio data. This inner loop iterate
         }
 
         if (ret < 0) {
-            fprintf("Error during decoding: %s\n", av_err2string(ret));
+            fprintf(stderr, "Error during decoding: %s\n", av_err2string(ret));
             goto cleanup;
         }
 ```
@@ -231,7 +244,7 @@ The reason is that the audio buffer that the codec gives us is of variable size:
             // do the actual memoryallocation
             ret = av_samples_alloc_array_and_samples(&buf, &dst_linesize, dst_nb_channels, dst_nb_samples, dst_sample_fmt, 0);
             if (ret < 0) {
-                fprintf("Failed to allocate output buffer: %s\n", av_err2string(ret));
+                fprintf(stderr, "Failed to allocate output buffer: %s\n", av_err2string(ret));
                 goto cleanup;
             }
             // store the allocated size in max_dst_nb_samples
@@ -246,7 +259,7 @@ And That's it ! You can then use the buffer as you see fit. The inner loop conti
 ```c
         ret = swr_convert(swr_ctx, buf, dst_nb_samples, const_cast<const uint8_t **>(frame->extended_data), frame->nb_samples);
         if (ret <= 0) {
-            fprintf("Failed to convert samples: %s\n", av_err2string(ret));
+            fprintf(stderr, "Failed to convert samples: %s\n", av_err2string(ret));
             goto cleanup;
         }
 
@@ -277,7 +290,7 @@ avformat_close_input(&fmt_ctx);
 
 It can sometimes be more convenient to process audio data in chunks of a fixed number of samples (such as a power of 2 for [fast fourier transforms](https://en.wikipedia.org/wiki/Fast_Fourier_transform), for example).
 
-A common technique is to use a [FIFO queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)), of which [circular buffers](https://en.wikipedia.org/wiki/Circular_buffer) are a common implementation in the audio world[^fifoqueue]. Each time we obtain a variable-size buffer, we put its contents at the back of the queue, then check if it contains a chunk's worth of data. In this case, we can obtain a chunk of the desired, fixed size from the front of the queue.
+A common technique is to use a [FIFO queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)), of which [circular buffers](https://en.wikipedia.org/wiki/Circular_buffer) are a common implementation in the audio world[^fifoqueue]. Each time we obtain a variable-size buffer, we put its contents at the back of the queue. Once the queue has filled up enough, we can obtain a chunk of the desired, fixed size from the front of the queue.
 
 [^fifoqueue]: I will be using the terms "FIFO" and "queue" interchangeably. Don't @ me.
 
@@ -291,51 +304,51 @@ Let's include the header and allocate the queue and fixed buffer first.
 const size_t CHUNK_NSAMPLES = 1024
 
 // Allocate fixed-length buffer, of size CHUNK_NSAMPLES
-uint8_t **fixedbuf = NULL;
-ret = av_samples_alloc_array_and_samples(&fixedbuf, &dst_linesize, dst_nb_channels, CHUNK_NSAMPLES, dst_sample_fmt, 0);
+uint8_t **chunk = NULL;
+ret = av_samples_alloc_array_and_samples(&chunk, &dst_linesize, dst_nb_channels, CHUNK_NSAMPLES, dst_sample_fmt, 0);
 if (ret < 0) {
-    fprintf("Failed to allocate output buffer: %s\n", av_err2string(ret));
+    fprintf(stderr, "Failed to allocate output buffer: %s\n", av_err2string(ret));
     goto cleanup;
 }
 
 // Allocate the fifo with a bit of space. It will be grown automatically if needed, anyway.
-AVAudioFifo *fifo = av_audio_fifo_alloc(dst_sample_fmt, dst_nb_channels, 2 * CHUNK_SIZE);
+AVAudioFifo *fifo = av_audio_fifo_alloc(dst_sample_fmt, dst_nb_channels, 2 * CHUNK_NSAMPLES);
 ```
 
-In the inner loop, insted of directly processing `buf`, we instead enqueue it onto `fifo`.
+In the inner loop, instead of using `buf` directly, we instead enqueue it onto `fifo`.
 
 ```c
 ret = av_audio_fifo_write(fifo, reinterpret_cast<void **>(buf), dst_nb_samples);
 if (ret < 0) {
-    fprintf("Failed to write samples to audio fifo: %s\n", av_err2string(ret));
+    fprintf(stderr, "Failed to write samples to audio fifo: %s\n", av_err2string(ret));
     goto cleanup;
 }
 ```
 
 Next, we check if there is enough data in `fifo`. We use a while loop because we may have enqueued more that one chunk's worth of data, in which case we want to dequeue as many chunks as is possible.
 
-We store the data in `fixedbuf`[^reuse] and then we can process it however we want.
+We store the data in `chunk`[^reuse] and then we can process it however we want.
 
 [^reuse]: You might want to reuse `buf` instead of having a separate buffer, if you care about memory usage.
 
 ```c
 while (av_audio_fifo_size(fifo) >= CHUNK_NSAMPLES) {
-    av_audio_fifo_read(fifo, reinterpret_cast<void **>(fixedbuf), CHUNK_NSAMPLES);
+    av_audio_fifo_read(fifo, reinterpret_cast<void **>(chunk), CHUNK_NSAMPLES);
 
-    my_custom_fixed_audio_processing_function(fixedbuf);
+    my_custom_fixed_audio_processing_function(chunk);
 }
 ```
 
-Of course, don't forget to deallocate the fifo and your fixed buffer once you're done with them.
+Of course, don't forget to deallocate the fifo and your fixed-size buffer once you're done with them.
 
 ```c
 cleanup:
 ...
 av_audio_fifo_free(fifo);
-if (fixedbuf) {
-    av_freep(&fixedbuf[0]);
+if (chunk) {
+    av_freep(&chunk[0]);
 }
-av_freep(&fixedbuf);
+av_freep(&chunk);
 
 ...
 ```

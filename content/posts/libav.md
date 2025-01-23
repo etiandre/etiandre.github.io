@@ -5,7 +5,7 @@ date = 2025-01-23T09:58:59+01:00
 draft = false
 +++
 
-This post presents the notions and thought process behind audio processing using [ffmpeg's libav*](https://trac.ffmpeg.org/wiki/Using%20libav*), with annotated example code.
+This post presents the notions and thought process behind audio processing using [ffmpeg's libav*](https://trac.ffmpeg.org/wiki/Using%20libav*), with annotated example code. We'll also see how to use a FIFO queue to efficiently process fixed-size chunks of audio data.
 
 The `libav*` set of libraries is the foundation behind the ubiquitous `ffmpeg`, and has a reputation for having hard API to use - most people<sup>*[citation needed]*</sup> prefer using the command-line API rather than having to deal with it. Thankfully, [the official documentation](https://www.ffmpeg.org/documentation.html) and the [API docs & examples](https://www.ffmpeg.org/doxygen/trunk/index.html) provide solid guidance for those who want to dive deeper. Let’s demystify the basics and get started!
 

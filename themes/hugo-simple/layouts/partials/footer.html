@@ -24,7 +24,7 @@
 </p>
 </p>
 {{ with .Site.Copyright }}
-<span>{{ . }}</span>
+<span>{{ . | safeHTML }}</span>
 {{ end }}
 {{ if not .Site.Params.hideMadeWithLine }}
 <span>

@@ -1,8 +1,8 @@
 +++
 title = 'How to decode audio streams in C/C++ using libav*'
 slug = 'how-to-decode-audio-streams-in-c-cpp-using-libav'
-date = 2025-01-16T09:58:59+01:00
-draft = true
+date = 2025-01-23T09:58:59+01:00
+draft = false
 +++
 
 This post presents the notions and thought process behind audio processing using [ffmpeg's libav*](https://trac.ffmpeg.org/wiki/Using%20libav*), with annotated example code.

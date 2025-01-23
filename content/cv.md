@@ -9,7 +9,7 @@ draft = false
 <p><a class="no-print" href="/resume">🇬🇧 english version</a></p>
 </center>
 
-## Étienne Paul André - Ingénieur Audio/DSP et systèmes embarqués
+## Étienne André - Ingénieur Audio/DSP et systèmes embarqués
 
 [eti.andre@gmail.com](mailto:eti.andre@gmail.com) / [06 51 23 64 89](tel:+33651236489) / [https://etiand.re](https://etiand.re)
 

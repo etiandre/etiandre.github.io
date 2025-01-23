@@ -6,7 +6,7 @@ draft = false
 
 ## Hi!
 
-<img src="/me.jpg" class="profile-picture" alt="Profile picture of Étienne Paul André">
+<img src="/me.jpg" class="profile-picture" alt="Profile picture of Étienne André">
 
 I’m **Étienne**, an **audio and embedded systems engineer** passionate about blending sound and technology, based in Paris, France.
 

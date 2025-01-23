@@ -49,6 +49,7 @@ tag = "tags"
 
 [permalinks]
 blog = "/:slugorfilename/"
+posts = '/posts/:year/:month/:slug/'
 tags = "/blog/:slug"
 
 [markup.goldmark.renderer]

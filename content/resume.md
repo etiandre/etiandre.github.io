@@ -8,7 +8,7 @@ draft = false
 <p><a class="no-print" href="/cv">🇫🇷 version française</a></p>
 </center>
 
-## Étienne André - Audio/DSP & Embedded Engineer
+## Étienne Paul André - Audio/DSP & Embedded Engineer
 
 [eti.andre@gmail.com](mailto:eti.andre@gmail.com) / [(+33) 6 51 23 64 89](tel:+33651236489) / [https://etiand.re](https://etiand.re)
 

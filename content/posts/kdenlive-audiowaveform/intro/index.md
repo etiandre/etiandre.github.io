@@ -1,6 +1,6 @@
 +++
 title = "Audio Waveforms in Kdenlive: Technical Upgrades for Speed, Precision, and better UX"
-date = 2024-12-14T18:24:37+01:00
+date = 2025-01-27T18:24:37+01:00
 draft = false
 +++
 

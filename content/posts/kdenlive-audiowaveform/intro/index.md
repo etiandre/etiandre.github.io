@@ -101,7 +101,7 @@ The old method sampled precomputed summaries at regular intervals, leading to ar
 
 ## Conclusion
 
-These improvements make audio waveform rendering in Kdenlive faster, more accurate, and more reliable.
+These improvements make audio waveform rendering in Kdenlive faster, more accurate, and more reliable. You'll be able to see the new rendering method in **Kdenlive 25.04** (due April 2025) !
 
 This is just one of many ways the Kdenlive team continues to enhance the user experience. If you’d like to support them, consider [contributing](https://kdenlive.org/en/developers-welcome/) or donating to the [Kdenlive fundraiser](https://kdenlive.org/en/fund/).
 

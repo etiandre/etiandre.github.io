@@ -1,6 +1,6 @@
 +++
 title = "Audio Waveforms in Kdenlive: Technical Upgrades for Speed, Precision, and better UX"
-date = 2025-01-27T18:24:37+01:00
+date = 2025-01-27T12:00:37+01:00
 draft = false
 +++
 
@@ -73,7 +73,7 @@ The easiest fix was to increase the resolution from 1 point per frame to **5 poi
 
 Profiling revealed MLT’s `audiolevel` filter as the main bottleneck: it was slower to retrieve frame metadata than to decode audio. Replacing it with a streamlined implementation reduced unnecessary operations and resulted in a modest performance boost.
 
-The best gains came from bypassing MLT entirely by leveraging the ubiquitous `libav` library directly, where applicable. This resulted in **up to a 3x performance boost**, while still increasing resolution fivefold.
+The best gains came from bypassing MLT entirely by leveraging the ubiquitous `libav` library directly, where applicable. (For a code walkthrough on decoding audio streams using libav, check out [this blog post]({{% ref "/posts/libav" %}}).) This resulted in **up to a 3x performance boost**, while still increasing resolution fivefold.
 
 **Generation times** (on my machine, a modest AMD Ryzen 7 3700U with SSD storage):
 

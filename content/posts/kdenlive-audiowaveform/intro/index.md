@@ -1,20 +1,20 @@
 +++
-title = "Reworking Kdenlive Waveform Rendering"
+title = "Audio Waveforms in Kdenlive: Technical Upgrades for Speed, Precision, and better UX"
 date = 2024-12-14T18:24:37+01:00
-draft = true
+draft = false
 +++
 
-I recently worked on audio waveform generation in [Kdenlive](https://kdenlive.org), an actively developed free and open-source [non-linear video editor](https://en.wikipedia.org/wiki/Non-linear_editing). It boasts a user base of over 100,000 per release on Linux, Windows, and macOS.
+I recently worked on audio waveform generation in [Kdenlive](https://kdenlive.org), an actively developed free and open-source [non-linear video editor](https://en.wikipedia.org/wiki/Non-linear_editing). It boasts a user base of over 100,000 users per release on Linux, Windows, and macOS.
 
 {{< figure caption="The Kdenlive video editor." src="kdenlive.png" >}}
 
 To improve user experience and overall performance, one focus was enhancing audio thumbnails—the small waveforms displayed on the timeline and in the clip player.
 
-Previously, generating these was **sluggish**, leading to frustrating delays for users starting their projects. **Precision** and **correctness** also left much to be desired, making them confusing to look at.
+Previously, generating these was slow, leading to frustrating delays for users starting their projects. Precision and correctness also left much to be desired, making them confusing to look at and work with.
 
 **Here's how I tackled these challenges to overhaul the waveform rendering process.**
 
-## Why Audio Waveforms Matter
+## Why Good Audio Waveforms Matter
 
 {{< figure caption="10 kHz sine wave displayed on an analog oscilloscope ([Pittigrilli](https://commons.wikimedia.org/wiki/File:Sine_wave_10_kHz_displayed_on_analog_oscilloscope.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0), via Wikimedia Commons)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Sine_wave_10_kHz_displayed_on_analog_oscilloscope.jpg/512px-Sine_wave_10_kHz_displayed_on_analog_oscilloscope.jpg?20221129181436" >}}
 
@@ -24,7 +24,7 @@ Previously, generating these was **sluggish**, leading to frustrating delays for
 
 This simple idea has been extended to fit more specialized use cases and can be adapted to diverse design choices.
 
-{{< figure src="mixcloud.png" caption="[Mixcloud](https://www.mixcloud.com/) uses a snake-like waveform representation." >}}
+{{< figure src="mixcloud.png" caption="[Mixcloud](https://www.mixcloud.com/) uses a beautiful coiled waveform style." >}}
 
 {{< figure src="mixxx.png" caption="[Mixxx](https://mixxx.org) displays frequency content as colors: red for bass, green for mids, and blue for treble." >}}
 
@@ -41,7 +41,7 @@ In video editing, the smallest unit of time is often the length of a video frame
 3. **Decoding and Seeking Overheads**: Decoding takes time, and not all media formats are easily seekable (or at all), adding latency.
 
 To address these challenges, we **precompute** low-resolution summaries then **cache** them in *peak files*[^peakfiles]. This allows the application to display waveforms quickly without repeatedly decoding the audio.
-[^peakfiles]: I'm not sure this is the consacred term, but audio software users likely are familiar with these, which end up littered *everywhere*: `.asd` for Ableton Live, `.pkf` for Adobe products, and so on...
+[^peakfiles]: I'm not sure this is the consacred term, but audio software users are likely familiar with these, which end up littered *everywhere*: `.asd` for Ableton Live, `.pkf` for Adobe products, and so on...
 
 ## Why Kdenlive’s Approach Needed an Upgrade
 

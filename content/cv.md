@@ -26,7 +26,7 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
   - **Systèmes Embarqués** : Plateformes automobiles, RTOS, environnements multi-thread
   - **Environnements Linux/UNIX** : Développement, Administration, Scripting, Déploiement
 - **Langages de programmation** : `C`, `C++`, `Python`, `Matlab`, `Rust`, `Bash`, `LaTeX`, `Typst`...
-- **Frameworks et bibliothèques** : `Qt`, `Pytorch`, `Numpy`, `GStreamer`, `OpenCV`, `libAV`
+- **Frameworks et bibliothèques** : `Qt`, `Pytorch`, `Numpy`, `GStreamer`, `OpenCV`, `libav*`
 - **Plateformes** : `Linux`, `Android`, `QNX`, `Windows`
 - **Outils de développement** : `Git`, `CMake`, `Docker`, Intégration continue / Déploiement continu (CI/CD)
 
@@ -43,6 +43,15 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
     Spécialisation : **Systèmes embarqués, Mobilités et Objets communicants ([SEM](https://www.telecom-sudparis.eu/formation/systemes-embarques-mobilites-et-objets-communicants/))**
 
 ## Expérience
+
+2025
+:   **Ingénieur en autoentreprise**; KDenlive, KDE e.V., à distance
+
+    _DSP, libav*, VLC, ffmpeg, C++_
+
+    - Amélioration des performances, de la fidélité et de l'exactitude des formes d'onde audio dans un éditeur vidéo open-source populaire
+    - Amélioration des performances de rendu de 300%
+    - Écriture et partage avec la communauté de posts techniques sur le sujet
 
 2024
 :   **Stage / Transcription automatique de mix DJ** ; IRCAM, ISMM, STMS, Paris, France

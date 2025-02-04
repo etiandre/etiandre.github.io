@@ -25,7 +25,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
   - **Embedded Systems**: Automotive platforms, RTOS, Multi-threaded environments
   - **Linux/UNIX Environments**: Development, Administration, Scripting, Deployment
 - **Programming Languages**: `C`, `C++`, `Python`, `Matlab`, `Rust`, `Bash`, `LaTeX`, `Typst`...
-- **Frameworks and Libraries**: `Qt`, `Pytorch`, `Numpy`, `GStreamer`, `OpenCV`, `libAV`
+- **Frameworks and Libraries**: `Qt`, `Pytorch`, `Numpy`, `GStreamer`, `OpenCV`, `libav`
 - **Platforms**: `Linux`, `Android`, `QNX`, `Windows`
 - **Development Tools**: `Git`, `CMake`, `Docker`, Continuous Integration/Continuous Deployment (CI/CD)
 
@@ -43,6 +43,15 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
     Specialization: **Embedded systems, Mobility and Communicating objects ([SEM](https://www.telecom-sudparis.eu/en/formation/embedded-systems-mobility-and-communicating-objects/))**
 
 ## Experience
+
+2025
+:   **Independent Contract Work**; KDenlive, KDE e.V., remote
+
+    _DSP, libav*, VLC, ffmpeg, C++_
+
+    - Improved performance, fidelity and correctness of audio waveforms in a popular open-soure video editor
+    - Achieved up to 3x speed-up on rendering by leveraging libav
+    - Wrote and shared technical articles with the community
 
 2024
 :   **Internship / Automatic DJ Mix Transcription**; IRCAM, ISMM, STMS, Paris, France

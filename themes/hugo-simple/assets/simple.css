@@ -2,10 +2,11 @@
 :root,
 ::backdrop {
   /* Set sans-serif & mono fonts */
-  --sans-font: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
+  --sans-font: "Inter", -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
     "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
     "Helvetica Neue", sans-serif;
-  --mono-font: "Fira Code", Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --headline-font: "Pridi", var(--sans-font);
+  --mono-font: "Iosevka Extended", "Fira Code", Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   --standard-border-radius: 5px;
 
   /* Default (light) theme */
@@ -25,6 +26,7 @@
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
+
   :root,
   ::backdrop {
     color-scheme: dark;
@@ -39,6 +41,7 @@
     --preformatted: #ccc;
     --disabled: #111;
   }
+
   /* Add a bit of transparency so light media isn't so glaring in dark mode */
   img,
   video {
@@ -47,7 +50,9 @@
 }
 
 /* Reset box-sizing */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -77,12 +82,13 @@ body {
   grid-template-columns: 1fr min(60rem, 90%) 1fr;
   margin: 0;
 }
-body > * {
+
+body>* {
   grid-column: 2;
 }
 
 /* Make the header bg full width, but the content inline with body */
-body > header {
+body>header {
   background-color: var(--accent-bg);
   border-bottom: 1px solid var(--border);
   text-align: center;
@@ -90,16 +96,16 @@ body > header {
   grid-column: 1 / -1;
 }
 
-body > header > *:only-child {
+body>header>*:only-child {
   margin-block-start: 2rem;
 }
 
-body > header h1 {
+body>header h1 {
   max-width: 1200px;
   margin: 1rem auto;
 }
 
-body > header p {
+body>header p {
   max-width: 40rem;
   margin: 1rem auto;
 }
@@ -109,7 +115,7 @@ main {
   padding-top: 1.5rem;
 }
 
-body > footer {
+body>footer {
   margin-top: 4rem;
   padding: 2rem 1rem 1.5rem 1rem;
   color: var(--text-light);
@@ -119,6 +125,15 @@ body > footer {
 }
 
 /* Format headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--headline-font);
+}
+
 h1 {
   font-size: 3rem;
 }
@@ -150,7 +165,13 @@ p {
 }
 
 /* Prevent long strings from overflowing container */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -192,7 +213,8 @@ a:hover {
 
 button,
 .button,
-a.button, /* extra specificity to override a */
+a.button,
+/* extra specificity to override a */
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
@@ -205,7 +227,7 @@ label[type="button"] {
   line-height: normal;
 }
 
-.button[aria-disabled="true"], 
+.button[aria-disabled="true"],
 input:disabled,
 textarea:disabled,
 select:disabled,
@@ -240,25 +262,23 @@ label[type="button"]:hover {
 
 .button:focus-visible,
 button:focus-visible:where(:enabled),
-input:enabled:focus-visible:where(
-  [type="submit"],
+input:enabled:focus-visible:where([type="submit"],
   [type="reset"],
-  [type="button"]
-) {
+  [type="button"]) {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
 
 /* Format navigation */
-header > nav {
+header>nav {
   font-size: 1.1rem;
   line-height: 2;
   padding: 1rem 0 0 0;
 }
 
 /* Use flexbox to allow items to wrap, as needed */
-header > nav ul,
-header > nav ol {
+header>nav ul,
+header>nav ol {
   align-content: space-around;
   align-items: center;
   display: flex;
@@ -271,13 +291,13 @@ header > nav ol {
 }
 
 /* List items are inline elements, make them behave more like blocks */
-header > nav ul li,
-header > nav ol li {
+header>nav ul li,
+header>nav ol li {
   display: inline-block;
 }
 
-header > nav a,
-header > nav a:visited {
+header>nav a,
+header>nav a:visited {
   margin: 0 0.5rem 1rem 0.5rem;
   border: 1px solid var(--border);
   border-radius: var(--standard-border-radius);
@@ -287,9 +307,9 @@ header > nav a:visited {
   text-decoration: none;
 }
 
-header > nav a:hover,
-header > nav a.current,
-header > nav a[aria-current="page"] {
+header>nav a:hover,
+header>nav a.current,
+header>nav a[aria-current="page"] {
   border-color: var(--accent);
   color: var(--accent);
   cursor: pointer;
@@ -297,7 +317,7 @@ header > nav a[aria-current="page"] {
 
 /* Reduce nav side on mobile */
 @media only screen and (max-width: 720px) {
-  header > nav a {
+  header>nav a {
     border: none;
     padding: 0;
     text-decoration: underline;
@@ -306,7 +326,10 @@ header > nav a[aria-current="page"] {
 }
 
 /* Consolidate box styling */
-aside, details, pre, progress {
+aside,
+details,
+pre,
+progress {
   background-color: var(--accent-bg);
   border: 1px solid var(--border);
   border-radius: var(--standard-border-radius);
@@ -320,6 +343,7 @@ aside {
   margin-inline-start: 15px;
   float: right;
 }
+
 *[dir="rtl"] aside {
   float: left;
 }
@@ -333,7 +357,9 @@ aside {
   }
 }
 
-article, fieldset, dialog {
+article,
+fieldset,
+dialog {
   border: 1px solid var(--border);
   padding: 1rem;
   border-radius: var(--standard-border-radius);
@@ -353,7 +379,7 @@ section {
 }
 
 /* Don't double separators when chaining sections */
-section + section,
+section+section,
 section:first-child {
   border-top: 0;
   padding-top: 0;
@@ -376,15 +402,15 @@ summary {
   word-break: break-all;
 }
 
-details[open] > summary + * {
+details[open]>summary+* {
   margin-top: 0;
 }
 
-details[open] > summary {
+details[open]>summary {
   margin-bottom: 0.5rem;
 }
 
-details[open] > :last-child {
+details[open]> :last-child {
   margin-bottom: 0;
 }
 
@@ -394,7 +420,7 @@ table {
   margin: 1.5rem 0;
 }
 
-figure > table {
+figure>table {
   width: max-content;
 }
 
@@ -435,6 +461,7 @@ button,
   max-width: 100%;
   display: inline-block;
 }
+
 textarea,
 select,
 input {
@@ -442,9 +469,11 @@ input {
   background-color: var(--bg);
   border: 1px solid var(--border);
 }
+
 label {
   display: block;
 }
+
 textarea:not([cols]) {
   width: 100%;
 }
@@ -458,6 +487,7 @@ select:not([multiple]) {
   background-repeat: no-repeat;
   padding-inline-end: 25px;
 }
+
 *[dir="rtl"] select:not([multiple]) {
   background-position: 10px, 15px;
 }
@@ -470,8 +500,8 @@ input[type="radio"] {
   width: min-content;
 }
 
-input[type="checkbox"] + label,
-input[type="radio"] + label {
+input[type="checkbox"]+label,
+input[type="radio"]+label {
   display: inline-block;
 }
 
@@ -499,6 +529,7 @@ input[type="checkbox"]:checked::after {
   font-size: 1.8em;
   transform: rotate(45deg);
 }
+
 input[type="radio"]:checked::after {
   /* creates a colored circle for the checked radio button  */
   content: " ";
@@ -514,6 +545,7 @@ input[type="radio"]:checked::after {
 
 /* Makes input fields wider on smaller screens */
 @media only screen and (max-width: 720px) {
+
   textarea,
   select,
   input {
@@ -524,7 +556,7 @@ input[type="radio"]:checked::after {
 /* Set a height for color input */
 input[type="color"] {
   height: 2.5rem;
-  padding:  0.2rem;
+  padding: 0.2rem;
 }
 
 /* do not show border around file selector button */
@@ -564,8 +596,8 @@ figure {
   overflow-x: auto;
 }
 
-figure > img,
-figure > picture > img {
+figure>img,
+figure>picture>img {
   display: block;
   margin-inline: auto;
 }
@@ -594,7 +626,7 @@ cite {
 }
 
 dt {
-    color: var(--text-light);
+  color: var(--text-light);
 }
 
 /* Use mono font for code elements */
@@ -605,6 +637,10 @@ kbd,
 samp {
   font-family: var(--mono-font);
   color: var(--code);
+}
+
+/* smaller font for code blocks */
+pre {
   font-size: 1rem;
 }
 
@@ -682,7 +718,8 @@ dialog::backdrop {
 
 /* Superscript & Subscript */
 /* Prevent scripts from affecting line-height. */
-sup, sub {
+sup,
+sub {
   vertical-align: baseline;
   position: relative;
 }
@@ -691,8 +728,8 @@ sup {
   top: -0.4em;
 }
 
-sub { 
-  top: 0.3em; 
+sub {
+  top: 0.3em;
 }
 
 /* Classes for notices */

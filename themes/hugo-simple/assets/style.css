@@ -80,7 +80,6 @@ thead th:empty {
     line-height: 1.1;
     font-size: 1rem;
     display: block;
-
   }
 
   p {
@@ -97,7 +96,6 @@ thead th:empty {
   h4,
   h5,
   h6 {
-    color: darkblue;
     text-align: center;
   }
 

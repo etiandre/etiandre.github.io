@@ -49,7 +49,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
 
     _DSP, libav*, VLC, ffmpeg, C++_
 
-    - Improved performance, fidelity and correctness of audio waveforms in a popular open-soure video editor
+    - Improved performance, fidelity and correctness of audio waveforms in a popular open-source video editor
     - Achieved up to 3x speed-up on rendering by leveraging libav
     - Wrote and shared technical articles with the community
 

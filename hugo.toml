@@ -1,4 +1,4 @@
-theme = ['hugo-video', 'hugo-simple']
+theme = ['hugo-simple']
 
 baseURL = 'https://etiand.re'
 languageCode = 'en-us'

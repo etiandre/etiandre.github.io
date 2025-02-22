@@ -14,7 +14,6 @@ The tracking is based on the scale-invariant feature transform (SIFT) algorithm 
 
 {{< figure src="vinyl-ref.jpg" title="Reference image of the vinyl label." >}}
 
-{{< video src="out" >}}
 
 ## Extracting the rotation angles from the homography matrix
 

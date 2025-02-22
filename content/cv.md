@@ -42,7 +42,7 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
 ## Formation
 
 2023-2024
-: **Master** ; IRCAM / Sorbonne Université, Paris, France
+: **Master 2** ; IRCAM / Sorbonne Université, Paris, France
 
     Spécialisation : **Acoustique, Traitement du signal, Informatique, Appliqués à la Musique  ([ATIAM](http://www.atiam.ircam.fr/fr/))**
 

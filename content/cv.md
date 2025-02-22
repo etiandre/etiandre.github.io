@@ -4,6 +4,8 @@ date = 2024-09-30T09:35:10+02:00
 draft = false
 +++
 
+<link rel="stylesheet" href="/cv.css"/>
+
 <center>
 <p><button class="no-print" onclick="window.print()"><box-icon name='printer' color="var(--accent-text)"></box-icon> Imprimer / <box-icon type='solid' name='file-pdf' color="var(--accent-text)"></box-icon> PDF </button></p>
 <p><a class="no-print" href="/resume">🇬🇧 english version</a></p>
@@ -33,19 +35,19 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
 ## Formation
 
 2023-2024
-:   **Master** ; IRCAM / Sorbonne Université, Paris, France
+: **Master** ; IRCAM / Sorbonne Université, Paris, France
 
     Spécialisation : **Acoustique, Traitement du signal, Informatique, Appliqués à la Musique  ([ATIAM](http://www.atiam.ircam.fr/fr/))**
 
 2016-2020
-:   **Diplôme d'ingénieur** ; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
+: **Diplôme d'ingénieur** ; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
 
     Spécialisation : **Systèmes embarqués, Mobilités et Objets communicants ([SEM](https://www.telecom-sudparis.eu/formation/systemes-embarques-mobilites-et-objets-communicants/))**
 
 ## Expérience
 
 2025
-:   **Ingénieur en autoentreprise**; KDenlive, KDE e.V., à distance
+: **Ingénieur en autoentreprise**; KDenlive, KDE e.V., à distance
 
     _DSP, libav*, VLC, ffmpeg, C++_
 
@@ -54,7 +56,7 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
     - Écriture et partage avec la communauté de posts techniques sur le sujet
 
 2024
-:   **Stage / Transcription automatique de mix DJ** ; IRCAM, ISMM, STMS, Paris, France
+: **Stage / Transcription automatique de mix DJ** ; IRCAM, ISMM, STMS, Paris, France
 
     _MIR, NMF, Python, CPU/GPU, Pytorch_
 
@@ -67,7 +69,7 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
     - Ingénierie inverse du format des fichiers de projets Ableton Live et développement d'un outil d'extraction de données.
 
 2021 - 2023
-:   **Ingénieur DSP et systèmes embarqués** ; Arkamys, Paris, France
+: **Ingénieur DSP et systèmes embarqués** ; Arkamys, Paris, France
 
     _C, C++, Qt, Matlab, Python, Linux, DSP, GStreamer, QNX_
 
@@ -80,7 +82,7 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
     - Prototypage et développement d'applications audio multi-plateformes complexes.
 
 2020
-:   **Stage / Évaluation des performances audio des smartphones** ; DXOMark, Boulogne-Billancourt, France
+: **Stage / Évaluation des performances audio des smartphones** ; DXOMark, Boulogne-Billancourt, France
 
     _Python, Qt, DSP, Android_
 
@@ -88,7 +90,7 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
     - Automatisation et simplification du protocole de test audio à travers la création de divers scripts et interfaces graphiques.
 
 2019
-:   **Stage / DUF : Dynamic Uncore Frequency scaling pour réduire la consommation énergétique** ; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
+: **Stage / DUF : Dynamic Uncore Frequency scaling pour réduire la consommation énergétique** ; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
 
     _C, Linux, systèmes distribués_
 

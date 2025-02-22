@@ -18,8 +18,7 @@ The tracking is based on the scale-invariant feature transform (SIFT) algorithm 
 
 ## Extracting the rotation angles from the homography matrix
 
-Each homography matrix 
-
+Each homography matrix
 
 ## Rotation computation
 
@@ -44,10 +43,9 @@ def decompose_homography(M):
     return theta_x, theta_y, theta_z
 ```
 
-
 Let $\mathbf{M} = \begin{bmatrix} \mathbf{u_1} & \mathbf{u_2} & \mathbf{u_3} \end{bmatrix}$ be a 3x3 homography matrix.
 
-1. What does $\mathbf{u_1}$, $\mathbf{u_2}$ and  $\mathbf{u_3}$ represent ?
+1. What does $\mathbf{u_1}$, $\mathbf{u_2}$ and $\mathbf{u_3}$ represent ?
 2. Let $\mathbf{v} = \mathbf{u_1} \times \mathbf{u_2} $ and $\mathbf{R} = \begin{bmatrix} \mathbf{u_1} & \mathbf{u_2} & \mathbf{v} \end{bmatrix}$. What does $\mathbf{R}$ represent ? Justify your answer.
 3. Assume singular value decomposition is performed on $\mathbf{R}$, so that $\mathbf{R} = \mathbf{U} \mathbf{S} \mathbf{V}^T$. Let $\mathbf{P} = \mathbf{U} \mathbf{V}^T$. What can be said of $\mathbf{P}$ ?
 
@@ -56,10 +54,10 @@ Given a homography matrix \( \mathbf{M} \), we can decompose it to retrieve the 
 1. Assume \( \mathbf{M} \) can be expressed as:
    \[
    \mathbf{M} = \begin{bmatrix}
-   \mathbf{r}_1 & \mathbf{r}_2 & \mathbf{t} \\
+   \mathbf{r}\_1 & \mathbf{r}\_2 & \mathbf{t} \\
    \end{bmatrix}
    \]
-   where \( \mathbf{r}_1 \) and \( \mathbf{r}_2 \) are the first two columns of the rotation matrix \( \mathbf{R} \), and \( \mathbf{t} \) is the translation component.
+   where \( \mathbf{r}\_1 \) and \( \mathbf{r}\_2 \) are the first two columns of the rotation matrix \( \mathbf{R} \), and \( \mathbf{t} \) is the translation component.
 
 2. Compute the third column \( r_3 \) of the rotation matrix as the cross product:
    \[
@@ -95,8 +93,6 @@ Given a homography matrix \( \mathbf{M} \), we can decompose it to retrieve the 
    \]
 
 The angles \( \theta_x \), \( \theta_y \), \( \theta_z \) represent the rotation around the respective axes and allow us to retrieve the 3D rotations embedded within the homography transformation.
-
-
 
 {{< figure src="rotato.svg" title="Computed angle and rotation speed of the vinyl. In the experiment, the record was played at 33 rpm for the first 30 seconds, then was \"scratched\" by hand for the remaining of the experiment." >}}
 

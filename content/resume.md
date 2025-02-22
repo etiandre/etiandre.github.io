@@ -3,6 +3,7 @@ title = 'Resume'
 date = 2024-09-30T09:35:10+02:00
 draft = false
 +++
+
 <center>
 <p><button class="no-print" onclick="window.print()"><box-icon name='printer' color="var(--accent-text)"></box-icon> Print / <box-icon type='solid' name='file-pdf' color="var(--accent-text)"></box-icon> Save as PDF</button></p>
 <p><a class="no-print" href="/cv">🇫🇷 version française</a></p>
@@ -29,23 +30,22 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
 - **Platforms**: `Linux`, `Android`, `QNX`, `Windows`
 - **Development Tools**: `Git`, `CMake`, `Docker`, Continuous Integration/Continuous Deployment (CI/CD)
 
-
 ## Education
 
 2023-2024
-:   **Master's degree**; IRCAM / Sorbonne Université, Paris, France
+: **Master's degree**; IRCAM / Sorbonne Université, Paris, France
 
     Specialization: **Signal Processing, Computer Science and Acoustics applied to Music ([ATIAM](http://www.atiam.ircam.fr/en/))**
 
 2016-2020
-:   **Master's degree in Engineering**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
+: **Master's degree in Engineering**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
 
     Specialization: **Embedded systems, Mobility and Communicating objects ([SEM](https://www.telecom-sudparis.eu/en/formation/embedded-systems-mobility-and-communicating-objects/))**
 
 ## Experience
 
 2025
-:   **Independent Contract Work**; KDenlive, KDE e.V., remote
+: **Independent Contract Work**; KDenlive, KDE e.V., remote
 
     _DSP, libav*, VLC, ffmpeg, C++_
 
@@ -54,7 +54,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
     - Wrote and shared technical articles with the community
 
 2024
-:   **Internship / Automatic DJ Mix Transcription**; IRCAM, ISMM, STMS, Paris, France
+: **Internship / Automatic DJ Mix Transcription**; IRCAM, ISMM, STMS, Paris, France
 
     _MIR, NMF, Python, CPU/GPU, Pytorch_
 
@@ -67,7 +67,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
     - Reverse-engineered the data format of Ableton Live project files and implemented a data extraction tool.
 
 2021 - 2023
-:   **DSP and embedded engineer**; Arkamys, Paris, France
+: **DSP and embedded engineer**; Arkamys, Paris, France
 
     _C, C++, Qt, Matlab, Python, Linux, DSP, GStreamer, QNX_
 
@@ -80,7 +80,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
     - Prototyped and developed complex multi-platform audio applications.
 
 2020
-:   **Internship / Evaluation of smartphone audio performance**; DXOMark, Boulogne-Billancourt, France
+: **Internship / Evaluation of smartphone audio performance**; DXOMark, Boulogne-Billancourt, France
 
     _Python, Qt, DSP, Android_
 
@@ -88,7 +88,7 @@ Based in Paris, France, I am an Audio/DSP & Embedded Engineer with a strong focu
     - Automated and simplified the audio test protocol through the creation of various scripts and graphical interfaces.
 
 2019
-:   **Internship / DUF: Dynamic Uncore Frequency scaling to reduce power consumption**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
+: **Internship / DUF: Dynamic Uncore Frequency scaling to reduce power consumption**; Télécom SudParis, Institut Polytechnique de Paris, Évry-Courcouronnes, France
 
     _C, Linux, distributed systems_
 

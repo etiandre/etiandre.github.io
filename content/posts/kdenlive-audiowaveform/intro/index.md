@@ -40,8 +40,8 @@ In video editing, the smallest unit of time is often the length of a video frame
 2. **Disk I/O Limits**: Continuously reading files from disk is slow, even with SSDs.
 3. **Decoding and Seeking Overheads**: Decoding takes time, and not all media formats are easily seekable (or at all), adding latency.
 
-To address these challenges, we **precompute** low-resolution summaries then **cache** them in *peak files*[^peakfiles]. This allows the application to display waveforms quickly without repeatedly decoding the audio.
-[^peakfiles]: I'm not sure this is the consacred term, but audio software users are likely familiar with these, which end up littered *everywhere*: `.asd` for Ableton Live, `.pkf` for Adobe products, and so on...
+To address these challenges, we **precompute** low-resolution summaries then **cache** them in _peak files_[^peakfiles]. This allows the application to display waveforms quickly without repeatedly decoding the audio.
+[^peakfiles]: I'm not sure this is the consacred term, but audio software users are likely familiar with these, which end up littered _everywhere_: `.asd` for Ableton Live, `.pkf` for Adobe products, and so on...
 
 ## Why Kdenlive’s Approach Needed an Upgrade
 
@@ -105,4 +105,4 @@ These improvements make audio waveform rendering in Kdenlive faster, more accura
 
 This is just one of many ways the Kdenlive team continues to enhance the user experience. If you’d like to support them, consider [contributing](https://kdenlive.org/en/developers-welcome/) or donating to the [Kdenlive fundraiser](https://kdenlive.org/en/fund/).
 
-*Disclaimer: This task was completed as part of contract work with [KDE e.V.](https://ev.kde.org/), made possible by the Kdenlive fundraiser.*
+_Disclaimer: This task was completed as part of contract work with [KDE e.V.](https://ev.kde.org/), made possible by the Kdenlive fundraiser._

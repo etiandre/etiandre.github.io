@@ -5,13 +5,13 @@ date = 2025-01-23T09:58:59+01:00
 draft = false
 +++
 
-This post presents the notions and thought process behind audio processing using [ffmpeg's libav*](https://trac.ffmpeg.org/wiki/Using%20libav*), with annotated example code. We'll also see how to use a FIFO queue to efficiently process fixed-size chunks of audio data.
+This post presents the notions and thought process behind audio processing using [ffmpeg's libav\*](https://trac.ffmpeg.org/wiki/Using%20libav*), with annotated example code. We'll also see how to use a FIFO queue to efficiently process fixed-size chunks of audio data.
 
-The `libav*` set of libraries is the foundation behind the ubiquitous `ffmpeg`, and has a reputation for having hard API to use - most people<sup>*[citation needed]*</sup> prefer using the command-line API rather than having to deal with it. Thankfully, [the official documentation](https://www.ffmpeg.org/documentation.html) and the [API docs & examples](https://www.ffmpeg.org/doxygen/trunk/index.html) provide solid guidance for those who want to dive deeper. Let’s demystify the basics and get started!
+The `libav*` set of libraries is the foundation behind the ubiquitous `ffmpeg`, and has a reputation for having hard API to use - most people<sup>_[citation needed]_</sup> prefer using the command-line API rather than having to deal with it. Thankfully, [the official documentation](https://www.ffmpeg.org/documentation.html) and the [API docs & examples](https://www.ffmpeg.org/doxygen/trunk/index.html) provide solid guidance for those who want to dive deeper. Let’s demystify the basics and get started!
 
 ## Introduction
 
-Before diving in, let's clarify a few key terms.  
+Before diving in, let's clarify a few key terms.
 
 A media file is essentially a **container**[^container] wrapping one or more **streams**—these could be video, audio, subtitles, or other data types. These containers split the streams in small chunks called **packets**, which can contain one or more **frames**[^frame].
 
@@ -22,13 +22,13 @@ Streams are often compressed, so they need to be decoded into raw data by a **co
 However, multiple variants of raw audio exist, with differing characteristics:
 
 - **Channel Layout**: defines not only the number of channels, but also their specific roles and arrangement (e.g. what we call "stereo" audio means 2 channels, first channel is on the left, second channel is on the right)
-- **Sample Rate**: The number of audio samples per second, measured in Hertz, determining the audio's temporal resolution.  
-- **Sample Format**: Describes how each audio sample is stored, such as integers (e.g., signed or unsigned, 8/16/24/32-bit) or floating-point values.  
-- **Buffer Layout**: Dictates how channel data is organized in memory:  
+- **Sample Rate**: The number of audio samples per second, measured in Hertz, determining the audio's temporal resolution.
+- **Sample Format**: Describes how each audio sample is stored, such as integers (e.g., signed or unsigned, 8/16/24/32-bit) or floating-point values.
+- **Buffer Layout**: Dictates how channel data is organized in memory:
   - In **deinterleaved** (or **planar**) audio, samples for each channel are stored in separate buffers, e.g., `[L1, L2, L3 ...]` for the left channel and `[R1, R2, R3, ...]` for the right.
   - In **interleaved** (or **packed**) audio, samples from all channels are stored sequentially in a single buffer, e.g., `[L1, R1, L2, R2, L3, R3, ...]`.
 
-Writing code to handle all these variants can be done but would be tiresome. Instead, if the codec does not give us the variant we want, we can  **convert** it towards a variant of our choosing.
+Writing code to handle all these variants can be done but would be tiresome. Instead, if the codec does not give us the variant we want, we can **convert** it towards a variant of our choosing.
 
 Another thing: for ease of programming, it could be tempting to load the whole audio stream in one go in a big buffer, then process it afterwards. Let's take an example: 1 hour of 16-bit, 5.1 surround (= 6 channel), raw audio sampled at 48kHz. This would result in a huge buffer:
 
@@ -241,7 +241,7 @@ if ((ret = swr_init(swr_ctx)) < 0) {
 }
 ```
 
-That's it for initialization ! Now, for the *pièce de résistance*.
+That's it for initialization ! Now, for the _pièce de résistance_.
 
 ### The loop
 
@@ -304,7 +304,7 @@ The reason is that the audio buffer that the codec gives us is of variable size:
         }
 ```
 
-Finally, the last step:  sample format conversion of the samples in `frame->extended_data`. If the codec already outputs the desired format, this will just copy the untouched samples to `buf`.
+Finally, the last step: sample format conversion of the samples in `frame->extended_data`. If the codec already outputs the desired format, this will just copy the untouched samples to `buf`.
 
 And That's it ! You can then use the buffer as you see fit. The inner loop continues until there is no more frames in the packet. Once we're done with the packet, we deallocate it and go back to the top of the outer loop.
 
@@ -350,7 +350,7 @@ void my_other_custom_audio_processing_function(int16_t *buf, int nchannels, int 
 }
 ```
 
-A common technique is to use a [FIFO queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)), of which [circular buffers](https://en.wikipedia.org/wiki/Circular_buffer) are a common implementation in the audio world[^fifoqueue]. Each time we obtain a variable-size buffer, we put its contents at the back of the queue. Once the queue has filled up enough, we can obtain a chunk of the desired, fixed size from the front of the queue.
+A common technique is to use a [FIFO queue](<https://en.wikipedia.org/wiki/Queue_(abstract_data_type)>), of which [circular buffers](https://en.wikipedia.org/wiki/Circular_buffer) are a common implementation in the audio world[^fifoqueue]. Each time we obtain a variable-size buffer, we put its contents at the back of the queue. Once the queue has filled up enough, we can obtain a chunk of the desired, fixed size from the front of the queue.
 
 [^fifoqueue]: I will be using the terms "FIFO" and "queue" interchangeably. Don't @ me.
 

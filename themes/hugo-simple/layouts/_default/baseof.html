@@ -23,6 +23,11 @@
     {{ $style := resources.Get "style.css" | minify }}
     <link href="{{ $style.RelPermalink }}" rel="stylesheet" />
 
+    {{ with $.Resources.GetMatch "**.css*" }}
+    {{ $style := . | minify | fingerprint }}
+    <link type=text/css rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ end }}
+
     {{ with .Params.style }}
       {{ $extra := resources.Get . | minify }}
       <link href="{{ $extra.RelPermalink }}" rel="stylesheet" />

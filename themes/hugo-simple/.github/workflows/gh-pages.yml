@@ -3,7 +3,7 @@ name: github pages
 on:
   push:
     branches:
-      - main  # Set a branch that will trigger a deployment
+      - main # Set a branch that will trigger a deployment
   pull_request:
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
+          submodules: true # Fetch Hugo themes (true OR recursive)
           # fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Nix

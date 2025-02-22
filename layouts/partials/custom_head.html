@@ -1,21 +1,22 @@
-{{ if or .Params.math .Site.Params.math }}
-{{ partial "math.html" . }}
-{{ end }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{ if or .Params.math .Site.Params.math }}{{ partial "math.html" . }}{{ end }}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pridi:wght@200;300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pridi:wght@200;300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
 
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8F1SWQ8ZFN"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-8F1SWQ8ZFN');
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-8F1SWQ8ZFN");
 </script>
 
-<meta name="google-adsense-account" content="ca-pub-2749183095440959">
+<meta name="google-adsense-account" content="ca-pub-2749183095440959" />

@@ -38,7 +38,10 @@ Output HTML:
 ```html
 ...
 
-<meta property="og:image" content="http://localhost:1313/og-image/kateryna-ivanova-etgAEeMw2wc-unsplash.jpg">
+<meta
+  property="og:image"
+  content="http://localhost:1313/og-image/kateryna-ivanova-etgAEeMw2wc-unsplash.jpg"
+/>
 
 ...
 ```

@@ -3,5 +3,4 @@
 
 
 <!-- https://www.veriphor.com/articles/code-block-render-hooks/ -->
-{{ $result := transform.HighlightCodeBlock . }}
-{{ $result.Wrapped }}
+{{ $result := transform.HighlightCodeBlock . }} {{ $result.Wrapped }}

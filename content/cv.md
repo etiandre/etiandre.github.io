@@ -13,7 +13,12 @@ draft = false
 
 ## Étienne Paul André - Ingénieur Audio/DSP et systèmes embarqués
 
-[eti.andre@gmail.com](mailto:eti.andre@gmail.com) / [06 51 23 64 89](tel:+33651236489) / [https://etiand.re](https://etiand.re)
+<box-icon name='envelope' size="xs"></box-icon>
+[eti.andre@gmail.com](mailto:eti.andre@gmail.com) /
+<box-icon name='phone' size="xs"></box-icon>
+[06 51 23 64 89](tel:+33651236489) /
+<box-icon name='globe' size="xs"></box-icon>
+[https://etiand.re](https://etiand.re)
 
 Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Recherche et Développement. Passionné par l'innovation dans les technologies audio, notamment à travers le développement d'algorithmes et d'applications dans les domaines du traitement de signal audio et/ou des systèmes embarqués.
 
@@ -23,10 +28,12 @@ Ingénieur Audio/DSP & Systèmes Embarqués avec un fort intérêt pour la Reche
 
 ## Compétences
 
-- **Expertise** :
-  - **Traitement du Signal Numérique (DSP)** : Algorithmes classiques, techniques ML, applications audio temps réel, Music Information Retrieval, Analyse & Synthèse, expérience pratique par la création de musique électronique
-  - **Systèmes Embarqués** : Plateformes automobiles, RTOS, environnements multi-thread
-  - **Environnements Linux/UNIX** : Développement, Administration, Scripting, Déploiement
+- **Systèmes Embarqués** : Plateformes automobiles, RTOS, environnements multi-thread
+- **Traitement du Signal Numérique (DSP)** : Algorithmes classiques, techniques ML, applications audio temps réel, Music Information Retrieval, Analyse & Synthèse, expérience pratique par la création de musique électronique
+- **Environnements Linux/UNIX** : Développement, Administration, Scripting, Déploiement
+
+<p/>
+
 - **Langages de programmation** : `C`, `C++`, `Python`, `Matlab`, `Rust`, `Bash`, `LaTeX`, `Typst`...
 - **Frameworks et bibliothèques** : `Qt`, `Pytorch`, `Numpy`, `GStreamer`, `OpenCV`, `libav*`
 - **Plateformes** : `Linux`, `Android`, `QNX`, `Windows`
